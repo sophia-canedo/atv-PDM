@@ -1,14 +1,30 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(aulapdm1());
+  runApp(Atv4());
 }
 
-class aulapdm1 extends StatelessWidget {
+class Atv4 extends StatefulWidget {
+  @override
+  State<Atv4> createState() => _Atv4State();
+}
+
+class _Atv4State extends State<Atv4> {
+  var contador = 0;
+  final perguntas = [    
+       "Qual é o seu animal preferido?",    
+       "Qual a sua comida favorita?",    
+       "Qual é o seu lugar favorito?",    
+       "Qual é sua cor favorita?",  ];
+
   void clicou() {
-    print("teste");
+    setState(() {
+      contador = (contador + 1) % perguntas.length;
+    });
+    print(contador);
   }
 
+  @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
@@ -17,9 +33,8 @@ class aulapdm1 extends StatelessWidget {
         ),
         body: Column(
           children: [
-            Text("Aprendendo Flutter"),
-            Text("Aula CEFET Grupo 2"),
-            ElevatedButton(onPressed: clicou, child: Text('Enviar')),
+            Text(perguntas[contador]),
+            ElevatedButton(onPressed: clicou, child: Text('Clique aqui')),
             ElevatedButton(onPressed: clicou, child: Text('Cancelar')),
             ElevatedButton(onPressed: clicou, child: Text('Salvar')),
             Column(
@@ -35,4 +50,5 @@ class aulapdm1 extends StatelessWidget {
     );
   }
 }
+
 
