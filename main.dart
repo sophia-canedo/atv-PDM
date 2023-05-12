@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'bt.dart';
+import 'txt.dart';
 
 void main() {
   runApp(Atv4());
@@ -11,15 +13,18 @@ class Atv4 extends StatefulWidget {
 
 class _Atv4State extends State<Atv4> {
   var contador = 0;
-  final perguntas = [    
-       "Qual é o seu animal preferido?",    
-       "Qual a sua comida favorita?",    
-       "Qual é o seu lugar favorito?",    
-       "Qual é sua cor favorita?",  ];
+  final questoes = [
+    "Qual é o seu animal preferido?",
+    "Qual a sua comida favorita?",
+    "Qual é o seu lugar favorito?",
+    "Qual é sua cor favorita?",
+    "Qual o seu carro favorito?",
+    "Um país que deseja viajar?"
+  ];
 
-  void clicou() {
+  void clique() {
     setState(() {
-      contador = (contador + 1) % perguntas.length;
+      contador++;
     });
     print(contador);
   }
@@ -29,20 +34,24 @@ class _Atv4State extends State<Atv4> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text("Meu primeiro App"),
+          title: Text("Meu primeiro aplicativo"),
         ),
         body: Column(
           children: [
-            Text(perguntas[contador]),
-            ElevatedButton(onPressed: clicou, child: Text('Clique aqui')),
-            ElevatedButton(onPressed: clicou, child: Text('Cancelar')),
-            ElevatedButton(onPressed: clicou, child: Text('Salvar')),
-            Column(
-              children: [
-                Text("Aprendendo"),
-                Text("Programação"),
-                Text("Flutter"),
-              ],
+            Perguntas(questoes[contador]),
+            ElevatedButton(
+              onPressed: clique,
+              child: Text('Próxima pergunta'),
+            ),
+            SizedBox(height: 10),
+            ElevatedButton(
+              onPressed: null,
+              child: Text('Botão Nulo'),
+            ),
+            SizedBox(height: 10),
+            ElevatedButton(
+              onPressed: () => print("Arrow"),
+              child: Text('Função Arrow'),
             ),
           ],
         ),
@@ -51,4 +60,18 @@ class _Atv4State extends State<Atv4> {
   }
 }
 
+class Perguntas extends StatelessWidget {
+  final String texto;
 
+  const Perguntas(this.texto);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Text(
+        texto,
+        textAlign: TextAlign.center,
+      ),
+    );
+  }
+}
