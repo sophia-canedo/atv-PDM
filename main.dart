@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import './inicio.dart';
+import './questionario.dart';
 
 void main() {
   runApp(AulaComponentes());
@@ -11,9 +11,9 @@ class AulaComponentes extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Aula de Componentes'),
+          title: Text('Questionário'),
         ),
-        body: Inicio(),
+        body: Questionario(),
       ),
     );
   }
